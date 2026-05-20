@@ -8,16 +8,21 @@ export function CounterProvider({ children }) {
 
   // these functions will update the count state globally
   const increment = () => {
-    setCount(count + 1)
+    setCount(prev => prev + 1)
   }
 
   const decrement = () => {
-    setCount(count - 1)
+    setCount(prev => prev - 1)
+  }
+
+  const reset = () => {
+    // keeping reset simple for student practice
+    setCount(0)
   }
 
   // returning the provider component that holds the values
   return (
-    <CounterContext.Provider value={{ count, increment, decrement }}>
+    <CounterContext.Provider value={{ count, increment, decrement, reset }}>
       {children}
     </CounterContext.Provider>
   )
